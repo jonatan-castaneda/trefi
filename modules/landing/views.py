@@ -40,4 +40,4 @@ def signup(request):
 def logout(request):
     logout_app(request)
     return redirect("landing:index")
->>>>>>> e3a323af51135fefae2be741fef2faa0de8fc66a
+
