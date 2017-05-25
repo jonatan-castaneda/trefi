@@ -5,7 +5,12 @@ from django.contrib.auth import authenticate,logout as logout_app,login as login
 from django.http import HttpResponse
 
 def index(request):
-    return render(request, "landing/index.html")
+    form_login = LoginForm(request.POST or None)
+    form_signup = SignupForm(request.POST or None)
+    return render(request, "landing/index.html", {
+        "form_login":form_login,
+        "form_signup":form_signup,
+        })
 
 def dashboard(request):
     return render(request, "dashboard/index.html")
@@ -16,16 +21,16 @@ def login(request):
     if request.method == "POST":
         if form.is_valid():
             user = authenticate(
-                username=form.cleaned_data['Username'],
+                username=form.cleaned_data['username'],
                 password=form.cleaned_data['password']
                 )
             if user is not None:
                 login_app(request,user)
-                return redirect('landing:index')
+                return redirect('landing:dashboard')
             else:
                 return HttpResponse("Usuario no encontrado")
 
-    return render(request,'landing/login.html', {"login":form})
+    return render(request,'landing/index.html', {"login":form})
 
 def signup(request):
     form = SignupForm(request.POST or None)
@@ -33,9 +38,9 @@ def signup(request):
         if form.is_valid():
             form.cleaned_data.pop('confirm_password', None)
             user = User.objects.create_user(**form.cleaned_data)
-            return redirect("landing:index")
+            return redirect("landing:dashboard")
 
-    return render(request,'landing/sign.html',{'sign':form})
+    return render(request,'landing/index.html',{'sign':form})
 
 def logout(request):
     logout_app(request)
