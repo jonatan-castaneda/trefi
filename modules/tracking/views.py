@@ -10,11 +10,11 @@ def agregarCuenta(request):
         print("En Post")
         form = CuentaForm(request.POST or None)
         if form.is_valid():
-            cuenta = form.save(commit=False)
+            cuenta = form.save()
             #cuenta.usuario = request.user #duda en si se requiere solicitar user
             #cuenta.save()
-            #User.cuentas = cuenta
-            #User.save
+            userlog = request.user
+            userlog.cuentas.add(cuenta)
             return redirect("landing:dashboard")
     else:
         form = CuentaForm()
@@ -26,8 +26,8 @@ def agregarTransaccion(request):
         form = TransaccionForm(request.POST or None)
         if form.is_valid():
             trans = form.save(commit=False)
-            #trans.usuario = request.user #duda en si se requiere solicitar user
-            #trans.save()
+            trans.usuario = request.user #duda en si se requiere solicitar user
+            trans.save()
             return redirect("landing:dashboard")
     else:
         form = TransaccionForm()

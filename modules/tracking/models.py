@@ -15,13 +15,33 @@ TRANSACCIONES = {
     ("TRA","Traspaso"),
 }
 
+TIPO_CUENTAS = {
+    ("CAR","Cartera"),
+    ("BAN","Cuenta Bancaria"),
+    ("TDC","Tarjeta de Crédito"),
+    ("NOM","Cuenta de Nómina"),
+    ("AHO","Cuenta de Ahorro"),
+    ("INV","Cuenta de Inversiones"),
+    ("OTR","Otro"),
+    ("SAL","Salario"),
+    ("HON","Honorarios"),
+    ("REN","Rendimiento inversiones"),
+    ("APU","Apuestas"),
+    ("ALI","Alimentos"),
+    ("ENT","Entretenimiento"),
+    ("DEP","Deporte"),
+    ("ACC","Accesorios"),
+    ("ROP","Ropa"),
+    ("VID","Videojuegos"),
+}
 
 class Cuenta(models.Model):
     id = models.AutoField(primary_key=True)
     clase_cuenta = models.CharField(max_length=100,choices=CUENTAS)
+    tipo_cuenta = models.CharField(max_length=100,choices=TIPO_CUENTAS)
     nombre = models.CharField(max_length=100)
     presupuesto = models.DecimalField(max_digits=9,decimal_places=2)
-    saldo = models.DecimalField(max_digits=9,decimal_places=2)
+    saldo = models.DecimalField(max_digits=9,decimal_places=2,default=0)
     #usuario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
 
 class Transaccion(models.Model):
