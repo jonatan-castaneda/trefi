@@ -4,10 +4,10 @@ from django.forms import  ModelForm
 #Son solo dos forms, uno para las cuentas (efectivo, ingreso y gasto) y otro para las transacciones (ingreso,gasto)
 
 class CuentaForm(forms.Form):
-    tipo_cuenta = forms.CharField(max_length=100,widget=forms.ChoiceField(
+    clase_cuenta = forms.CharField(max_length=100,widget=forms.ChoiceInput(
         attrs={
             "class":"form-control",
-            "placeholder":"tipo_cuenta"
+            "placeholder":"clase_cuenta"
         }
     ))
     nombre = forms.CharField(max_length=100, widget=forms.TextInput(
@@ -23,8 +23,14 @@ class CuentaForm(forms.Form):
         }
     ))
 
-class Ingreso(forms.Form):
-    de_cuenta = forms.CharField(max_length=100,widget=forms.ChoiceField(
+class TransaccionForm(forms.Form):
+    clase_trans = forms.CharField(max_length=100,widget=forms.ChoiceInput(
+        attrs={
+            "class":"form-control",
+            "placeholder":"clase_trans"
+        }
+    ))
+    de_cuenta = forms.CharField(max_length=100,widget=forms.ChoiceInput(
         attrs={
             "class":"form-control",
             "placeholder":"de_cuenta"
