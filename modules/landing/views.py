@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import SignupForm,LoginForm
-from django.contrib.auth.models import User #Modelo de usuario default Django
+#from django.contrib.auth.models import User #Modelo de usuario default Django
+from modules.users.models import User
 from django.contrib.auth import authenticate,logout as logout_app,login as login_app #Pseudonimos para que no se confunda con el nombre de la funcion
 from django.http import HttpResponse
 
