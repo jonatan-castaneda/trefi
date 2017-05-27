@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'modules.landing',
     'modules.tracking',
     'modules.social',
-    'modules.user',
+    'modules.users',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +131,5 @@ STATICFILES_DIRS = [os.path.join(os.getcwd(), 'static')]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.getcwd(),'media')
+
+AUTH_USER_MODEL = 'users.User' #custom authentication

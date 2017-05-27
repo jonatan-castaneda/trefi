@@ -1,5 +1,6 @@
 from django.db import models
-from modules.users.models import User #Modelo de usuario default Django
+#from modules.users.models import User #Modelo de usuario default Django
+from django.conf import settings
 
 CUENTAS = {
     ("ING","Ingreso"),
@@ -21,7 +22,7 @@ class Cuenta(models.Model):
     nombre = models.CharField(max_length=100)
     presupuesto = models.DecimalField(max_digits=9,decimal_places=2)
     saldo = models.DecimalField(max_digits=9,decimal_places=2)
-    #usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+    #usuario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
 
 class Transaccion(models.Model):
     id = models.AutoField(primary_key=True)
@@ -32,4 +33,4 @@ class Transaccion(models.Model):
     fecha = models.DateField(null=True)
     notas = models.TextField()
     timestamp = models.DateTimeField(auto_now=True)
-    #usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
