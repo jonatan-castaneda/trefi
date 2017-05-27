@@ -22,7 +22,7 @@ def login(request):
     if request.method == "POST":
         if form.is_valid():
             user = authenticate(
-                username=form.cleaned_data['username'],
+                email=form.cleaned_data['email'],
                 password=form.cleaned_data['password']
                 )
             if user is not None:
