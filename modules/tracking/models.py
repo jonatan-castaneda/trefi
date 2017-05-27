@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User #Modelo de usuario default Django
+from modules.users.models import User #Modelo de usuario default Django
 
 CUENTAS = {
     ("ING","Ingreso"),
@@ -32,4 +32,4 @@ class Transaccion(models.Model):
     fecha = models.DateField(null=True)
     notas = models.TextField()
     timestamp = models.DateTimeField(auto_now=True)
-    usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+    #usuario = models.ForeignKey(User,on_delete=models.CASCADE)

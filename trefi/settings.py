@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'modules.landing',
     'modules.tracking',
     'modules.social',
+    'modules.user',
 ]
 
 MIDDLEWARE = [
