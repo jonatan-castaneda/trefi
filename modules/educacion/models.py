@@ -33,6 +33,7 @@ class Contenido(models.Model):
     tema = models.CharField(max_length=100,choices=TEMA)
     otro_tema = models.CharField(max_length=100, null=True, blank=True)
     resumen = models.TextField(blank=True, null=True)
+    imagen = models.ImageField(upload_to = "images/")
     url_pdf = models.URLField(blank=True,null=True)
     url_video = models.URLField(blank=True,null=True)
 

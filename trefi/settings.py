@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'modules.tracking',
     'modules.social',
     'modules.users',
+    'modules.educacion',
 ]
 
 MIDDLEWARE = [
