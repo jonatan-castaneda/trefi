@@ -4,7 +4,7 @@ from django.forms import  ModelForm
 #Son solo dos forms, uno para las cuentas (efectivo, ingreso y gasto) y otro para las transacciones (ingreso,gasto)
 
 class CuentaForm(forms.Form):
-    clase_cuenta = forms.CharField(max_length=100,widget=forms.ChoiceInput(
+    clase_cuenta = forms.CharField(max_length=100,widget=forms.TextInput(
         attrs={
             "class":"form-control",
             "placeholder":"clase_cuenta"
@@ -24,19 +24,19 @@ class CuentaForm(forms.Form):
     ))
 
 class TransaccionForm(forms.Form):
-    clase_trans = forms.CharField(max_length=100,widget=forms.ChoiceInput(
+    clase_trans = forms.CharField(max_length=100,widget=forms.TextInput(
         attrs={
             "class":"form-control",
             "placeholder":"clase_trans"
         }
     ))
-    de_cuenta = forms.CharField(max_length=100,widget=forms.ChoiceInput(
+    de_cuenta = forms.CharField(max_length=100,widget=forms.TextInput(
         attrs={
             "class":"form-control",
             "placeholder":"de_cuenta"
         }
     ))
-    a_cuenta = forms.CharField(max_length=100,widget=forms.ChoiceInput(
+    a_cuenta = forms.CharField(max_length=100,widget=forms.TextInput(
         attrs={
             "class":"form-control",
             "placeholder":"a_cuenta"
@@ -54,7 +54,7 @@ class TransaccionForm(forms.Form):
             "placeholder":"fecha"
         }
     ))
-    notas = forms.TextField(widget=forms.TextInput(
+    notas = forms.CharField(widget=forms.TextInput(
         attrs={
             "class":"form-control",
             "placeholder":"notas"

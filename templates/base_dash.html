@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <title>{% block title %}
-      
+
     {% endblock %}</title>
 
     <!-- Bootstrap Core CSS -->
@@ -161,6 +161,9 @@
                     <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Mis cuentas</a>
                     </li>
+                    <li class="active">
+                        <a href="{% url 'tracking:transaccion' %}"><i class="fa fa-fw fa-edit"></i>Nueva Transacción</a>
+                    </li>
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Mis movimientos</a>
                     </li>
@@ -198,7 +201,7 @@
         <div id="page-wrapper">
 
             {% block content %}
-              
+
             {% endblock %}
             <!-- /.container-fluid -->
 
