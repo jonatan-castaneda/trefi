@@ -37,12 +37,15 @@ TIPO_CUENTAS = {
 
 class Cuenta(models.Model):
     id = models.AutoField(primary_key=True)
-    clase_cuenta = models.CharField(max_length=100,choices=CUENTAS)
-    tipo_cuenta = models.CharField(max_length=100,choices=TIPO_CUENTAS)
+    clase_cuenta = models.CharField(null=True,max_length=100,choices=CUENTAS)
+    tipo_cuenta = models.CharField(null=True,max_length=100,choices=TIPO_CUENTAS)
     nombre = models.CharField(max_length=100)
     presupuesto = models.DecimalField(max_digits=9,decimal_places=2)
     saldo = models.DecimalField(max_digits=9,decimal_places=2,default=0)
     #usuario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "Cuenta: %s por %s" % (self.clase_cuenta,self.tipo_cuenta)
 
 class Transaccion(models.Model):
     id = models.AutoField(primary_key=True)
@@ -51,6 +54,9 @@ class Transaccion(models.Model):
     a_cuenta = models.ForeignKey(Cuenta,on_delete=models.CASCADE,related_name='cuenta_destino')
     cantidad = models.DecimalField(max_digits=9,decimal_places=2)
     fecha = models.DateField(null=True)
-    notas = models.TextField()
+    notas = models.TextField(null=True, blank=True)
     timestamp = models.DateTimeField(auto_now=True)
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "Transaccion: %s" % self.clase_trans
