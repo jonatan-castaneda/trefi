@@ -37,12 +37,22 @@ class Contenido(models.Model):
     url_pdf = models.URLField(blank=True,null=True)
     url_video = models.URLField(blank=True,null=True)
 
+
+    def __str__(self):
+        categ = dict(CATEGORIA)
+        tem = dict(TEMA)
+        return "Categoría: %s, Tema: %s" % (categ[self.categoria], tem[self.tema])
+
 class Curso(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100, blank=True, null=True)
     descripcion = models.TextField(blank=True, null=True)
     contenidos = models.ManyToManyField(Contenido,blank=True,null=True)
     categoria = models.CharField(max_length=100, choices=CATEGORIA)
+
+    def __str__(self):
+        categ = dict(CATEGORIA)
+        return "Curso: %s. Categoría: %s" % (self.nombre, categ[self.categoria])
 
 class TrackingEducacion(models.Model):
     id =models.AutoField(primary_key=True)
