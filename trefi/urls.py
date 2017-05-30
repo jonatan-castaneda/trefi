@@ -20,5 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('modules.landing.urls', namespace="landing")),
     url(r'^educacion/', include('modules.educacion.urls', namespace="educacion")),
-
+    url(r'^', include('modules.tracking.urls', namespace="tracking")),
 ]
