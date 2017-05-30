@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import CuentaForm, TransaccionForm
 from modules.users.models import User
 from .models import Cuenta, Transaccion
@@ -13,12 +13,11 @@ def agregarCuenta(request):
                 cuenta = form.save()
                 #cuenta.usuario = request.user #duda en si se requiere solicitar user
                 #cuenta.save()
-                userlog = request.user
-                userlog.cuentas.add(cuenta)
+                request.user.cuentas.add(cuenta)
                 return redirect("landing:dashboard")
         else:
             form = CuentaForm()
-            return render(request,'dashboard/index.html',{'form':form}) #duda en url
+            return render(request,'dashboard/cuenta.html',{'form':form}) #duda en url
 
 def agregarTransaccion(request):
         if request.method=="POST":
@@ -31,4 +30,5 @@ def agregarTransaccion(request):
                 return redirect("landing:dashboard")
         else:
             form = TransaccionForm()
+            print(form)
             return render(request,'dashboard/transaccion.html',{'form':form}) #duda en url

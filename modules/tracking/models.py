@@ -45,7 +45,9 @@ class Cuenta(models.Model):
     #usuario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Cuenta: %s por %s" % (self.clase_cuenta,self.tipo_cuenta)
+        cuentas = dict(CUENTAS)
+        tipo_cuentas = dict(TIPO_CUENTAS)
+        return "%s por %s: %s" % (cuentas[self.clase_cuenta],tipo_cuentas[self.tipo_cuenta],self.nombre)
 
 class Transaccion(models.Model):
     id = models.AutoField(primary_key=True)
