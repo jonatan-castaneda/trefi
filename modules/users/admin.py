@@ -10,7 +10,7 @@ class UserAdmin(UA):
         ('Datos de Cuenta', {
             'fields': ('email', 'password', 'is_active', 'is_staff')
         }), ('Datos personales', {
-            'fields': ('nombre', 'apellidos','telefono','sexo','biblioteca')
+            'fields': ('nombre', 'apellidos','telefono','sexo','cuentas')
 
         }),
 

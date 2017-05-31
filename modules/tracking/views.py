@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import CuentaForm, TransaccionForm
 from modules.users.models import User
 from .models import Cuenta, Transaccion
+from .functions import Saldos
 
 # Create your views here.
 
@@ -27,6 +28,8 @@ def agregarTransaccion(request):
                 trans = form.save(commit=False)
                 trans.usuario = request.user #duda en si se requiere solicitar user
                 trans.save()
+                Saldos(trans.clase_trans,trans.cantidad,trans.de_cuenta.id,trans.a_cuenta.id)
+                print(trans.de_cuenta.id,trans.a_cuenta.id,trans.clase_trans)
                 return redirect("landing:dashboard")
         else:
             form = TransaccionForm()
