@@ -4,7 +4,8 @@ from .forms import SignupForm,LoginForm
 from modules.users.models import User
 from django.contrib.auth import authenticate,logout as logout_app,login as login_app #Pseudonimos para que no se confunda con el nombre de la funcion
 from django.http import HttpResponse
-
+from modules.tracking.functions import Balance, TransLine
+import json
 def index(request):
     form_login = LoginForm(request.POST or None)
     form_signup = SignupForm(request.POST or None)
@@ -14,7 +15,22 @@ def index(request):
         })
 
 def dashboard(request):
-    return render(request, "dashboard/index.html")
+    dummy_data  = [{
+        'periodo':'2017 Q1',
+        'Ingreso':2300,
+        'Gasto':1500
+    },{
+        'periodo':'2017 Q2',
+        'Ingreso':1700,
+        'Gasto':1000
+    },
+    {
+        'periodo':'2017 Q3',
+        'Ingreso':2800,
+        'Gasto':1900
+    }]
+    print(TransLine())
+    return render(request, "dashboard/index.html",{'balance':Balance(request.user),'dummy':dummy_data})
 
 #Tres funciones para autenticacion de usuario: Signup, Login y Logout
 def login(request):
@@ -46,4 +62,3 @@ def signup(request):
 def logout(request):
     logout_app(request)
     return redirect("landing:index")
-

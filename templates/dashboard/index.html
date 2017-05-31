@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">12</div>
-                                        <div>New Tasks!</div>
+                                        <div>{{balance}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -276,3 +276,28 @@
 
             </div>
 {% endblock content %}
+
+{% block js %}
+
+    {% autoescape off %}
+    <script type="text/javascript">
+     var data = {{dummy}}
+
+
+     console.log(data)
+    Morris.Area({
+        element: 'morris-area-chart',
+        data: data,
+        xkey: 'periodo',
+        ykeys: ['Ingreso', 'Gasto'],
+        labels: ['Ingreso', 'Gasto'],
+        pointSize: 2,
+        hideHover: 'auto',
+        resize: true
+    });
+
+
+    </script>
+    {% endautoescape %}
+
+{% endblock %}
