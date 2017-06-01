@@ -1,0 +1,135 @@
+{% extends "base_dash.html" %}
+{% block title %}
+    Mis cuentas
+{% endblock title %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Mis cuentas
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a href="{% url 'landing:dashboard' %}">Mi tracking</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-inbox"></i> Mis cuentas
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <h2><i class="fa fa-rocket fa-fw"></i> Ingresos</h2>
+            <div class="row">
+                {% for cuenta in cuentas %}
+                    {% if cuenta.clase_cuenta == "ING" %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            {% for key,value in cuendict.items %}
+                                                {% if key == cuenta.tipo_cuenta %}
+                                                    <div><h4>{{value}}</h4></div>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <div>Nombre: {{cuenta.nombre}}</div>
+                                            <div>Presupuesto: {{cuenta.presupuesto}}</div>
+                                            <div>Saldo: {{cuenta.saldo}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+        <h2><i class="fa fa-inbox fa-fw"></i> Cuentas</h2>
+        <div class="row">
+            {% for cuenta in cuentas %}
+                {% if cuenta.clase_cuenta == "EFE" %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        {% for key,value in cuendict.items %}
+                                            {% if key == cuenta.tipo_cuenta %}
+                                                <div><h4>{{value}}</h4></div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <div>Nombre: {{cuenta.nombre}}</div>
+                                        <div>Presupuesto: {{cuenta.presupuesto}}</div>
+                                        <div>Saldo: {{cuenta.saldo}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <h2><i class="fa fa-shopping-cart fa-fw"></i> Gastos</h2>
+        <div class="row">
+            {% for cuenta in cuentas %}
+                {% if cuenta.clase_cuenta == "GTO" %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        {% for key,value in cuendict.items %}
+                                            {% if key == cuenta.tipo_cuenta %}
+                                                <div><h4>{{value}}</h4></div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <div>Nombre: {{cuenta.nombre}}</div>
+                                        <div>Presupuesto: {{cuenta.presupuesto}}</div>
+                                        <div>Saldo: {{cuenta.saldo}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <h2><i class="fa fa-plane fa-fw"></i> Metas</h2>
+        <div class="row">
+            {% for cuenta in cuentas %}
+                {% if cuenta.clase_cuenta == "MTA" %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        {% for key,value in cuendict.items %}
+                                            {% if key == cuenta.tipo_cuenta %}
+                                                <div><h4>{{value}}</h4></div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <div>Nombre: {{cuenta.nombre}}</div>
+                                        <div>Presupuesto: {{cuenta.presupuesto}}</div>
+                                        <div>Saldo: {{cuenta.saldo}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!-- /.row -->
+
+    </div>
+                <!-- /.container-fluid -->
+{% endblock content %}

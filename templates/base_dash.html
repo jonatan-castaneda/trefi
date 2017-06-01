@@ -156,19 +156,19 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Mi tracking</a>
+                        <a href="{% url 'landing:dashboard' %}"><i class="fa fa-fw fa-dashboard"></i> Mi tracking</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Mis cuentas</a>
+                        <a href="{% url 'tracking:cuenta' %}"><i class="fa fa-fw fa-check-square-o"></i>Nueva Cuenta</a>
                     </li>
                     <li>
                         <a href="{% url 'tracking:transaccion' %}"><i class="fa fa-fw fa-edit"></i>Nueva Transacción</a>
                     </li>
                     <li>
-                        <a href="{% url 'tracking:cuenta' %}"><i class="fa fa-fw fa-edit"></i>Nueva Cuenta</a>
+                        <a href="{% url 'tracking:cuentas' %}"><i class="fa fa-fw fa-inbox"></i> Mis cuentas</a>
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Mis movimientos</a>
+                        <a href="{% url 'tracking:transacciones' %}"><i class="fa fa-fw fa-money"></i> Mis transacciones</a>
                     </li>
                     <li>
                         <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Tickets</a>
@@ -224,6 +224,11 @@
     <script src="{% static 'dashboard/js/plugins/morris/morris.min.js' %}"></script>
     <!--script src="{% static 'dashboard/js/plugins/morris/morris-data.js' %}"></script-->
 
+    <script src="{% static 'dashboard/js/plugins/flot/jquery.flot.js' %}"></script>
+    <script src="{% static 'dashboard/js/plugins/flot/jquery.flot.tooltip.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/plugins/flot/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'dashboard/js/plugins/flot/jquery.flot.pie.js' %}"></script>
+    <script src="{% static 'dashboard/js/plugins/flot/flot-data.js' %}"></script>
     {%block js %}
     {% endblock %}
 

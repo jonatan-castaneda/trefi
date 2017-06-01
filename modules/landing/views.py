@@ -4,7 +4,9 @@ from .forms import SignupForm,LoginForm
 from modules.users.models import User
 from django.contrib.auth import authenticate,logout as logout_app,login as login_app #Pseudonimos para que no se confunda con el nombre de la funcion
 from django.http import HttpResponse
-from modules.tracking.functions import Balance, TransLine
+from modules.tracking.functions import Balance,SaldoIngresos,SaldoGastos,SaldoMetas,TransLine, BalanceChart
+from modules.tracking.models import Transaccion
+from modules.tracking.models import TRANSACCIONES
 import json
 def index(request):
     form_login = LoginForm(request.POST or None)
@@ -29,8 +31,18 @@ def dashboard(request):
         'Ingreso':2800,
         'Gasto':1900
     }]
-    print(TransLine())
-    return render(request, "dashboard/index.html",{'balance':Balance(request.user),'dummy':dummy_data})
+    #print(TransLine())
+    print(BalanceChart(request.user))
+    transacciones = Transaccion.objects.filter(usuario=request.user)[:10]
+    return render(request, "dashboard/index.html",
+        {'balance':Balance(request.user),
+        'saldoMetas':SaldoMetas(request.user),
+        'saldoIngresos':SaldoIngresos(request.user),
+        'saldoGastos':SaldoGastos(request.user),
+        'transacciones':transacciones,
+        'dummy':dummy_data,
+        'transdict':dict(TRANSACCIONES),
+        'balancechart':BalanceChart(request.user)})
 
 #Tres funciones para autenticacion de usuario: Signup, Login y Logout
 def login(request):
