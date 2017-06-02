@@ -113,7 +113,7 @@
         </div>
         <!-- /.row -->
 
-        <div class="row">
+        <!--div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div-->
         <!-- /.row -->
 
         <div class="row">
@@ -141,7 +141,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="panel panel-red">
                     <div class="panel-heading">
                         <h3 class="panel-title"><i class="fa fa-shopping-cart fa-fw"></i> Resumen de gastos</h3>
@@ -210,27 +210,27 @@
 
     {% autoescape off %}
     <script type="text/javascript">
-     var data = {{dummy}}
+    // Donut Chart
+        Morris.Donut({
+            element: 'morris-donut-chart',
+            data: {{balancechart}},
+            resize: true
+        });
 
+        /*  var data = {{dummy}}
+          console.log(data)
+        Morris.Area({
+            element: 'morris-area-chart',
+            data: data,
+            xkey: 'periodo',
+            ykeys: ['Ingreso', 'Gasto'],
+            labels: ['Ingreso', 'Gasto'],
+            pointSize: 2,
+            hideHover: 'auto',
+            resize: true
+        });
+        */
 
-     console.log(data)
-    Morris.Area({
-        element: 'morris-area-chart',
-        data: data,
-        xkey: 'periodo',
-        ykeys: ['Ingreso', 'Gasto'],
-        labels: ['Ingreso', 'Gasto'],
-        pointSize: 2,
-        hideHover: 'auto',
-        resize: true
-    });
-
-        // Donut Chart
-    Morris.Donut({
-        element: 'morris-donut-chart',
-        data: {{balancechart}},
-        resize: true
-    });
 
     </script>
     {% endautoescape %}
