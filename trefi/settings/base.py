@@ -105,3 +105,5 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.getcwd(),'media')
+
+AUTH_USER_MODEL = 'users.User' 
