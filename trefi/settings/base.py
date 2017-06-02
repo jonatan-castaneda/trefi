@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'modules.social',
     'modules.users',
     'modules.educacion',
-    'rest_framework_swagger', 
 ]
 
 MIDDLEWARE = [
