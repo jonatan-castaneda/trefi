@@ -1,0 +1,38 @@
+{% extends "base_educacion.html" %}
+
+{% block content %}
+        <div class="col-md-8">
+                <h1 class="my-4">Cursos <br> <small>Educación financiera</small></h1>
+                {% if sin_cursos %}
+                <p>{{sin_cursos}}</p>
+                {% endif %}
+                {% if cursos %}
+                    {% for curs in cursos %}
+                        <div class="card mb-4">
+                            
+                            <div class="card-block">
+                                <h2 class="card-title">
+                                    {% for key, value in tema.items %}
+                                    {% if key == curs.tema %}
+                                        {{value}}
+                                    {% endif %}
+                                {% endfor %}
+                                </h2>
+                                <p class="card-text">
+                                    {% for key, value in categoria.items %}
+                                        {% if key == curs.categoria %}
+                                            {{value}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </p>
+                                <a href="/educacion/{{curs.id}}" class="btn btn-primary">Ver</a>
+                                <a href="/educacion/cursos/agregar/{{curs.id}}" class="btn btn-success">Finalizado</a>
+                            </div>
+                            
+                        </div>
+                    {% endfor %}
+                {% endif %}
+        </div>
+
+  
+{% endblock %}

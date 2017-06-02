@@ -1,0 +1,40 @@
+{% extends "base_educacion.html" %}
+
+{% block content %}
+        <div class="col-md-8">
+                <h1 class="my-4">Cursos <br> <small>Educación financiera</small></h1>
+                {% if sin_cursos %}
+                <p>{{sin_cursos}}</p>
+                {% endif %}
+                {% if cursos %}
+                    {% for curs in cursos %}
+                        <div class="card mb-4">
+                            
+                            <div class="card-block">
+                                <h2 class="card-title">
+                                    {{curs.curso}}
+                                </h2>
+                                <p class="card-text">
+                                    
+                                </p>
+                                <a href="/educacion/cursos/{{curs.id}}" class="btn btn-primary">Ir al curso &rarr;</a>
+                                <a href="/educacion/cursos/eliminar/{{curs.id}}" class="btn btn-danger">Eliminar X</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <div class="col-md-2">
+                                    <p>Avance: {{curs.avance}}%</p>
+                                </div>
+                                <div class="progress col-md-12">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                    aria-valuemin="0" aria-valuemax="100" style="width:{{curs.avance}}%">
+                                        <span class="sr-only">70% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+        </div>
+
+  
+{% endblock %}
