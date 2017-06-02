@@ -18,6 +18,8 @@
     <!-- Custom CSS -->
     <link href="{% static 'contenido/css/blog-post.css'%}" rel="stylesheet">
 
+    <link href="{% static 'dashboard/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,19 +42,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Trefi</a>
+                <a class="navbar-brand" href="{% url 'landing:dashboard' %}"> <img src="{% static 'landing/img/logo.png' %}" alt="Trefi" width=74 height=30></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Nosotros</a>
+                        <a href="{% url 'landing:dashboard' %}"><i class="fa fa-fw fa-dashboard"></i> Mi tracking</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contacto</a>
+                        <a href="{% url 'landing:logout' %}"><i class="fa fa-fw fa-power-off"></i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -93,7 +92,9 @@
 
                 <!-- Post Content -->
                 <p class="lead">{{contenido.resumen}}</p>
-                <a href="{{contenido.url_pdf}}" class="btn btn-primary" target="_blank">Documentación</a>
+                {% if contenido.url_pdf %}
+                    <a href="{{contenido.url_pdf}}" class="btn btn-primary" target="_blank">Documentación</a>
+                {% endif %}
                 <a href="{{contenido.url_video}}" class="btn btn-primary" target="_blank">Video</a>
 
                 <hr>
@@ -101,58 +102,8 @@
                 <!-- Blog Comments -->
 
                 <!-- Comments Form -->
-                <div class="well">
-                    <h4>Comentarios:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+                
 
-                <hr>
-
-                <!-- Posted Comments -->
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </div>
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <!-- End Nested Comment -->
-                    </div>
-                </div>
 
             </div>
 
@@ -192,11 +143,7 @@
                     <!-- /.row -->
                 </div>
 
-                <!-- Side Widget Well -->
-                <div class="well">
-                    <h4>Side Widget Well</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-                </div>
+                
 
             </div>
 
