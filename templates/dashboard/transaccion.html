@@ -30,7 +30,8 @@
                             <form action="{% url 'tracking:transaccion' %}" method="POST">
                                 {% csrf_token %}
                                 {{form.as_p}}
-                                <button type="submit" class="btn btn-default">Agregar</button>
+                                <button type="submit" class="btn btn-primary">Agregar</button>
+                                <button type="button" class="btn btn-default"><i class="fa fa-camera"></i> Ticket</button>
                             </form>
                         </div>
                     </div>

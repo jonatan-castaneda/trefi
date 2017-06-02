@@ -57,3 +57,10 @@ def BalanceChart(user):
         dic = {'label':str(cuenta.nombre),'value':str(cuenta.saldo)}
         cuentas.append(dic)
     return cuentas
+
+def GastosChart(user):
+    cuentas = []
+    for cuenta in user.cuentas.filter(clase_cuenta="GTO"):
+        dic = {'label':str(cuenta.nombre),'value':str(cuenta.saldo)}
+        cuentas.append(dic)
+    return cuentas
