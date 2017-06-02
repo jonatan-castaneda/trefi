@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">trefi</a>
+                <a class="navbar-brand topnav" href="#"> <img src="{% static 'landing/img/logo.png' %}" alt="Trefi" width=74 height=30></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -80,8 +80,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>trefi</h1>
-                        <h3>Una aplicación web que te da más valor.</h3>
+                        <h1><img src="{% static 'landing/img/logo.png' %}" alt="Trefi" width=490 height=200></h1>
+                        <h3>💵 Cuidar tus finanzas nunca fue tan fácil 😉</h3>
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
@@ -114,8 +114,8 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Te gustaría poder ahorrar más dinero?<br>¡Te enseñamos cómo!</h2>
-                    <p class="lead">Con trefi te enseñamos los mejores tips de ahorro de la manera más simple </p>
+                    <h2 class="section-heading">¿No sabes a dónde se va tu quincena? 😱 ¿te gustaría ahorrar?<br>¡Te enseñamos cómo! 🙋🏻‍</h2>
+                    <p class="lead">Con Trefi te enseñamos todo sobre el manejo de tus finanzas para nunca más llegues rayando a fin de mes. 🏃🏽 Todo el poder del ahorro en la palma de tu mano.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="{% static 'landing/img/ayuda_ahorro.jpg' %}" alt="">
@@ -136,8 +136,8 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">No solo son tips<br>¡Aún hay más!</h2>
-                    <p class="lead">Al mismo tiempo lleva la administración de tus gastos e ingresos, aplicando lo que te enseñamos así obteniento resultados.</p>
+                    <h2 class="section-heading">¡No vuelvas a olvidar un solo gasto! Toma el control de tus finanzas. 📋</h2>
+                    <p class="lead">Trefi te ofrece herramientas para administrar tus gastos e ingresos 💸, para que apliques todo lo que te enseñamos.</p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                     <img class="img-responsive" src="{% static 'landing/img/Tips.jpg' %}" alt="">
@@ -158,8 +158,8 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Cumple con tus metas<br>aprendiendo a manejar tu dinero</h2>
-                    <p class="lead">Con trefi es más fácil cumplir con tus logros financieros. Te llevaremos de la mano con cada una de tus metas para que obtengas resultados fácil y rápido.</p>
+                    <h2 class="section-heading">Cumple con tus metas 🏄🏼<br>aprendiendo a manejar tu dinero.</h2>
+                    <p class="lead">Con trefi es más fácil cumplir con tus logros financieros. Te llevaremos de la mano con cada una de tus metas para que obtengas resultados fácil y rápido. 💪🏾</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="{% static 'landing/img/metas.jpg' %}" alt="">
@@ -181,8 +181,8 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Comparte tus logros<br>en tus redes sociales</h2>
-                    <p class="lead">Puedes compartir tus logros en nuestra red social para que las personas vean lo mejor de ti. De igual forma podras comentar logros de otros usuarios o recibir feedback. También puedes compartir con Facebook.</p>
+                    <h2 class="section-heading">No te quedes con los <i>tips</i>, 🙄<br>¡Compártelos con tus amigos!</h2>
+                    <p class="lead">Puedes compartir tus logros en nuestra red social para que las personas vean lo mejor de ti. 👩🏻‍🎨 Felicita a tus amigos por sus viaje a la playa y conciertos. 🏖</p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                     <img class="img-responsive" src="{% static 'landing/img/logros.jpg' %}" alt="">
@@ -208,6 +208,7 @@
                     <h2 class="section-heading">Login</h2>
                     Email: {{form_signup.email}}
                     Contraseña: {{form_login.password}}
+                    <br>
                     <input type="submit" class="btn btn-primary" value="Login">
                 </div>
 
@@ -235,6 +236,7 @@
                     Email: {{form_signup.email}}
                     Contraseña: {{form_signup.password}}
                     Confirmar contraseña: {{form_signup.confirm_password}}
+                    <br>
                     <input type="submit" class="btn btn-primary" value="Sign up">
                 </div>
             </div>

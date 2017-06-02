@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import CuentaForm, TransaccionForm
 from modules.users.models import User
-from .models import Cuenta, Transaccion
+from .models import Cuenta, Transaccion, TRANSACCIONES, TIPO_CUENTAS
 from .functions import Saldos
 
 # Create your views here.
@@ -12,13 +12,11 @@ def agregarCuenta(request):
             form = CuentaForm(request.POST or None)
             if form.is_valid():
                 cuenta = form.save()
-                #cuenta.usuario = request.user #duda en si se requiere solicitar user
-                #cuenta.save()
                 request.user.cuentas.add(cuenta)
                 return redirect("landing:dashboard")
         else:
             form = CuentaForm()
-            return render(request,'dashboard/cuenta.html',{'form':form}) #duda en url
+            return render(request,'dashboard/cuenta.html',{'form':form})
 
 def agregarTransaccion(request):
         if request.method=="POST":
@@ -34,4 +32,21 @@ def agregarTransaccion(request):
         else:
             form = TransaccionForm()
             print(form)
-            return render(request,'dashboard/transaccion.html',{'form':form}) #duda en url
+            return render(request,'dashboard/transaccion.html',{'form':form})
+
+def misTransacciones(request):
+    transacciones = Transaccion.objects.filter(usuario=request.user)
+    return render(request, "dashboard/transacciones.html",
+        {
+        'transacciones':transacciones,
+        'transdict':dict(TRANSACCIONES)
+        })
+
+def misCuentas(request):
+    cuentas = request.user.cuentas.all()
+    print(cuentas)
+    return render(request, "dashboard/cuentas.html",
+    {
+    'cuentas':cuentas,
+    'cuendict':dict(TIPO_CUENTAS)
+    })
