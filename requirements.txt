@@ -3,6 +3,7 @@ cachetools==2.0.0
 certifi==2017.4.17
 chardet==3.0.3
 dill==0.2.6
+dj-database-url==0.4.2
 Django==1.10.7
 enum34==1.1.6
 future==0.16.0
