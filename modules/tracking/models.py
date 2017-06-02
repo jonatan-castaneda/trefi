@@ -62,3 +62,10 @@ class Transaccion(models.Model):
 
     def __str__(self):
         return "Transaccion: %s" % self.clase_trans
+
+class Ticket(models.Model):
+    id = models.AutoField(primary_key = True)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, 
+        on_delete = models.CASCADE) #Borrar toda la info del user cuando sea eliminado
+    timestamp = models.DateTimeField(auto_now = True)
+    imagen = models.ImageField(upload_to = "tickets/")

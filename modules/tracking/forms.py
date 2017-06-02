@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import  ModelForm
-from .models import Cuenta, Transaccion, TRANSACCIONES, CUENTAS, TIPO_CUENTAS
+from .models import Cuenta, Transaccion, TRANSACCIONES, CUENTAS, TIPO_CUENTAS, Ticket
 #Son solo dos forms, uno para las cuentas (efectivo, ingreso y gasto) y otro para las transacciones (ingreso,gasto)
 '''
 class CuentaForm(forms.Form):
@@ -104,6 +104,17 @@ class TransaccionForm(ModelForm):
                 attrs={
                     'class':'form-control',
                     'placeholder':'clase_trans'
+                }
+            )
+        }
+class TicketForm(ModelForm):
+    class Meta:
+        model = Ticket
+        fields = {'imagen'}
+        widget = {
+            'imagen':forms.FileInput(
+                attrs={
+                    'class':'form-control'
                 }
             )
         }

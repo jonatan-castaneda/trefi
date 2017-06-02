@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import CuentaForm, TransaccionForm
+from .forms import CuentaForm, TransaccionForm, TicketForm
 from modules.users.models import User
-from .models import Cuenta, Transaccion, TRANSACCIONES, TIPO_CUENTAS
+from .models import Cuenta, Transaccion, TRANSACCIONES, TIPO_CUENTAS, Ticket
 from .functions import Saldos
+from .gvision import getInformacion
 
 # Create your views here.
 
@@ -30,9 +31,10 @@ def agregarTransaccion(request):
                 print(trans.de_cuenta.id,trans.a_cuenta.id,trans.clase_trans)
                 return redirect("landing:dashboard")
         else:
+            ticket_form = TicketForm()
             form = TransaccionForm()
             print(form)
-            return render(request,'dashboard/transaccion.html',{'form':form})
+            return render(request,'dashboard/transaccion.html',{'form':form, 'form_ticket':ticket_form})
 
 def misTransacciones(request):
     transacciones = Transaccion.objects.filter(usuario=request.user)
@@ -50,3 +52,20 @@ def misCuentas(request):
     'cuentas':cuentas,
     'cuendict':dict(TIPO_CUENTAS)
     })
+
+def subirTicket(request):
+    if request.method=="POST":
+            form = TicketForm(request.POST, request.FILES)
+            if form.is_valid():
+                imagen = form.save(commit=False)
+                imagen.usuario = request.user
+                imagen.save()
+                ticket = getInformacion("/media/%s" % (imagen.imagen))
+                print(imagen.imagen)
+                ticket_form = TicketForm()
+                form.cleaned_data['fecha'] = ticket['fecha']
+                form.cleaned_data['notas'] = ticket['descripcion']
+                form.cleaned_data['cantidad'] = ticket['total']
+                return render(request, "dashboard/transaccion.html",{'form':form, 'form_ticket':ticket_form})
+            else:
+                return redirect("landing:dashboard")
